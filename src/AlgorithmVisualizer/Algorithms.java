@@ -3,8 +3,6 @@ package AlgorithmVisualizer;
 import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.text.Highlighter.Highlight;
-
 public class Algorithms {
 	
 	public Algorithms() {
@@ -211,7 +209,6 @@ public class Algorithms {
 		
 		// Merge the two sub arrays
 		while(i < arrSize1 && j < arrSize2) {
-			int temp = rectangles[currIndex].getHeight();
 			if(leftRectangles[i].getHeight() < rightRectangles[j].getHeight()) {
 				rectangles[currIndex].setHeight(leftRectangles[i].getHeight());
 				i++;
@@ -230,7 +227,6 @@ public class Algorithms {
 		
 		// Copies the rest of the elements in the left rectangles sub array, if there are any left
 		while(i < arrSize1) {
-			int temp = rectangles[currIndex].getHeight();
 			rectangles[currIndex].setHeight(leftRectangles[i].getHeight());
 			rectangles[currIndex].setColor(Color.magenta);
 			currIndex++;
@@ -242,7 +238,6 @@ public class Algorithms {
 		
 		// Copies the rest of the elements in the right rectangles sub array, if there are any left
 		while(j < arrSize2) {
-			int temp = rectangles[currIndex].getHeight();
 			rectangles[currIndex].setHeight(rightRectangles[j].getHeight());
 			rectangles[currIndex].setColor(Color.magenta);
 			currIndex++;
