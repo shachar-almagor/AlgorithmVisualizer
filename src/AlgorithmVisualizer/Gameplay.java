@@ -2,26 +2,38 @@ package AlgorithmVisualizer;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
 
-public class Gameplay extends JPanel{
+public class Gameplay extends JPanel implements ActionListener{
 	private Rectangle[] rectangles;
 	private int[] rectangleHeights;
 	private int totalRectangles;
 	private int rectangleWidth;
 	boolean start = true;
 	
+	private Timer timer;
+	private int delay = 8;
+	
 	public Gameplay(int totalRectangles) throws InterruptedException {
 		this.totalRectangles = totalRectangles;
 		this.rectangles = new Rectangle[this.totalRectangles];
 		this.rectangleWidth = 650 / this.totalRectangles;
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(true);
+
+		timer = new Timer(totalRectangles, this);
+		timer.start();
 		makeRectangles();
 	}
 	
 	public void paint(Graphics g) {
-
+		
 		// Background
 		drawBackground(g);
 		
@@ -53,7 +65,7 @@ public class Gameplay extends JPanel{
 	public void makeRectangles() {
 		// Make 100 rectangles with different unique heights between 1 - 100, and with different colors
 		for(int i = 0; i < this.totalRectangles; i++) {
-			Rectangle curr = new Rectangle(i + 1, rectangleWidth, Color.white);
+			Rectangle curr = new Rectangle((i + 1) * 15, rectangleWidth, Color.white);
 			curr.setX(66 + (i * rectangleWidth));
 			rectangles[i] = curr;
 		}
@@ -127,5 +139,11 @@ public class Gameplay extends JPanel{
 	
 	public int getRectangleWidth() {
 		return this.rectangleWidth;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

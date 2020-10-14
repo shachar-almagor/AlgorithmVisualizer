@@ -17,8 +17,11 @@ public class Rectangle {
 	}
 	
 	public void draw(Graphics g) {
+		g.setColor(Color.black);
 		g.setColor(this.color);
+//		g.drawRect(this.x, 700 - this.height, this.width, this.height);
 		g.fillRect(this.x, 700 - this.height, this.width, this.height);
+		g.drawLine(this.x, 700 - this.height, this.x, this.height );
 	}
 	
 	public void clear(Graphics g) {

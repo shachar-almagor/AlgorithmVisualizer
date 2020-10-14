@@ -3,6 +3,8 @@ package AlgorithmVisualizer;
 import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 
+import javax.naming.InitialContext;
+
 public class Algorithms {
 	
 	public Algorithms() {
@@ -248,6 +250,42 @@ public class Algorithms {
 		}
 
 
+	}
+	
+	// Add user controlled values to be searched
+	public void binarySearch(Rectangle[] rectangles, Gameplay gameplay, int result) throws InterruptedException {
+		binarySearchRec(rectangles, gameplay, 0, rectangles.length - 1, result);
+	}
+	
+	public void binarySearchRec(Rectangle[] rectangles, Gameplay gameplay, int left, int right, int result) throws InterruptedException {
+		if(left > right) return;
+		// Get initial color to set back after searching
+		Color initialColor = rectangles[left].getColor();
+		
+		rectangles[left].setColor(Color.black);
+		rectangles[right].setColor(Color.black);
+		
+		rectangles[left].draw(gameplay.getGraphics());
+		rectangles[right].draw(gameplay.getGraphics());
+		TimeUnit.MILLISECONDS.sleep(350);
+
+		int mid = (left + right) / 2;
+		rectangles[left].setColor(initialColor);
+		rectangles[right].setColor(initialColor);
+		
+		rectangles[left].draw(gameplay.getGraphics());
+		rectangles[right].draw(gameplay.getGraphics());
+
+		if(mid == result) {
+			rectangles[mid].setColor(Color.green);
+			rectangles[mid].draw(gameplay.getGraphics());
+			return;
+		} else if(mid > result) {
+			binarySearchRec(rectangles, gameplay, left, mid - 1, result);
+		} else {
+			binarySearchRec(rectangles, gameplay, mid + 1, right, result);
+		}
+		
 	}
 	
 	public void shuffle(Gameplay gameplay) throws InterruptedException {
