@@ -2,6 +2,7 @@ package AlgorithmVisualizer;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -65,7 +66,7 @@ public class Gameplay extends JPanel implements ActionListener{
 	public void makeRectangles() {
 		// Make 100 rectangles with different unique heights between 1 - 100, and with different colors
 		for(int i = 0; i < this.totalRectangles; i++) {
-			Rectangle curr = new Rectangle((i + 1) * 15, rectangleWidth, Color.white);
+			Rectangle curr = new Rectangle((i + 1) * 10, rectangleWidth, Color.white);
 			curr.setX(66 + (i * rectangleWidth));
 			rectangles[i] = curr;
 		}
@@ -73,7 +74,7 @@ public class Gameplay extends JPanel implements ActionListener{
 	
 	public void drawRectangles(Graphics g) throws InterruptedException {
 		for(int i = 0; i < this.totalRectangles; i++) {
-			rectangles[i].draw(g);
+			rectangles[i].draw((Graphics2D) g, true);
 		}
 	}
 	
@@ -90,15 +91,25 @@ public class Gameplay extends JPanel implements ActionListener{
 		for(int i = 0; i < this.totalRectangles; i++) {
 			int rand = (int) ((Math.random() * (this.totalRectangles - i)) + i);
 			
+		
+			
 			int randRectHeight = this.rectangles[rand].getHeight();
 			int currHeight = this.rectangles[i].getHeight();
 			int temp = randRectHeight;
+			
+//			this.rectangles[rand].setColor(Color.darkGray);
+//			this.rectangles[i].setColor(Color.darkGray);
+//			this.rectangles[rand].draw((Graphics2D) getGraphics(), true);
+//			this.rectangles[i].draw((Graphics2D) getGraphics(), true);	
 			
 			this.rectangles[rand].setHeight(currHeight);
 			this.rectangles[i].setHeight(temp);
 			
 			this.rectangles[rand].setColor(Color.blue);
-			this.rectangles[i].setColor(Color.magenta);
+			this.rectangles[i].setColor(Color.white);
+			
+//			this.rectangles[rand].draw((Graphics2D) getGraphics(), true);
+//			this.rectangles[i].draw((Graphics2D) getGraphics(), true);	
 			
 			drawBackground(getGraphics());
 			drawRectangles(getGraphics());

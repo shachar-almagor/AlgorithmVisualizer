@@ -8,7 +8,7 @@ public class Main {
 	
 	public Main() throws InterruptedException {
 		frame = new JFrame();
-		Gameplay gameplay = new Gameplay(30);
+		Gameplay gameplay = new Gameplay(50);
 		Settings settings = new Settings(frame);
 		
 		Toolbar toolbar = new Toolbar(gameplay, settings);

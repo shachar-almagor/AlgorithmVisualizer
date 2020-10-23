@@ -1,12 +1,15 @@
 package AlgorithmVisualizer;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Rectangle {
 	private int x;
 	private int height;
 	private int width;
+	private boolean border;
 	private Color color;
 	
 	
@@ -14,14 +17,18 @@ public class Rectangle {
 		this.height = height;
 		this.width = width;
 		this.color = color;
+		this.border = true;
 	}
 	
-	public void draw(Graphics g) {
-		g.setColor(Color.black);
+	public void draw(Graphics2D g, boolean border) {		
 		g.setColor(this.color);
-//		g.drawRect(this.x, 700 - this.height, this.width, this.height);
 		g.fillRect(this.x, 700 - this.height, this.width, this.height);
-		g.drawLine(this.x, 700 - this.height, this.x, this.height );
+		
+//		if(border) {
+//			g.setStroke(new BasicStroke(3));
+//			g.setColor(Color.black);
+//			g.drawRect(this.x, 700 - this.height, this.width, this.height);
+//		}
 	}
 	
 	public void clear(Graphics g) {
