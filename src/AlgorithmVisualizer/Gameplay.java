@@ -107,6 +107,7 @@ public class Gameplay extends JPanel implements ActionListener{
 			
 			this.rectangles[rand].setColor(Color.blue);
 			this.rectangles[i].setColor(Color.white);
+			System.out.println("hi");
 			
 //			this.rectangles[rand].draw((Graphics2D) getGraphics(), true);
 //			this.rectangles[i].draw((Graphics2D) getGraphics(), true);	
